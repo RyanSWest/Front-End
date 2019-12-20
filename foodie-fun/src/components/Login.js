@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 const Login = ()=> {
 
-     
+    //  const history = useHistory();
  
       const [user, setUser] = useState( {
           username: '',
@@ -32,12 +32,13 @@ const Login = ()=> {
           e.preventDefault();
           axiosWithAuth()
           .post('https://bw-foodiefun.herokuapp.com/api/user/login', user)
-          .then(res=> {
-              localStorage.setItem("Authorization", res.data.token)
-              console.log(res.data)
+          // .then(res=> {
+          //     localStorage.setItem("Authorization", res.data.token)
+              .then(localStorage.setItem('user', user.username))
+              // console.log( "RES",res.data)
             //   history.push('/dashboard')
 
-          })
+          // })
           .catch(err => console.log(err));
 
           console.log("USER", user)
