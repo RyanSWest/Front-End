@@ -9,12 +9,11 @@ class SearchBar extends React.Component {
     super(props)
     this.state ={
         restaraunts:[],
-        search: ''
+        search: '',
+        
     }
 }
-updateSearch(e) {
-    this.setState({search: e.target.value})
-  }
+ 
 
   
 
@@ -43,8 +42,10 @@ updateSearch(e) {
     let filteredPlaces = this.state.restaraunts.filter (
         (e)=> {
             return e.name.indexOf(this.state.search)!== -1;
-        }
+         }
     );
+
+    
 
     return(
       <div>
@@ -52,7 +53,7 @@ updateSearch(e) {
      <input 
      className = 'search'
      type ='search'
-     placeholder = 'Search'
+     placeholder = 'Search by name'
      value ={this.state.search}
      onChange ={this.onChange}
      
@@ -60,12 +61,19 @@ updateSearch(e) {
      
      
      />
+
+     
       </form>
      <div className ='search-div'> 
+     
 
 {filteredPlaces.map((e)=> {
      return(
+       <>
        <h2>{e.name}</h2>
+       <h3>{e.city}</h3>
+       <h3>{e.state}</h3>
+       </>
      )
 })}
 </div>
