@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import React, { useState } from "react";
+import Preview from "react-data-preview";
+import { FormProvider } from "react-advanced-form";
+import rules from "./validation-rules";
+import messages from "./validation-messages";
+import RegistrationForm from "./RegistrationForm";
 
-function App() {
+function NewApp() {
+  const [serialized, setSerialized] = useState(null);
+  const handleSubmitStart = ({ serialized }) => {
+    setSerialized({ serialized });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FormProvider rules={rules} messages={messages}>
+      <div className="flex">
+        <RegistrationForm onSubmitStart={handleSubmitStart} />
+        <Preview data={serialized} />
+      </div>
+    </FormProvider>
   );
 }
 
-export default App;
+export default NewApp;
