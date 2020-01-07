@@ -8,13 +8,5 @@ export default {
       oneNumber: ({ value }) => /[0-9]/.test(value),
       minLength: ({ value }) => value.length > 5
     }
-  },
-
-  name: {
-    confirmPassword: {
-      matches: ({ value, get }) => {
-        return value === get(["userPassword", "value"]);
-      }
-    }
   }
 };

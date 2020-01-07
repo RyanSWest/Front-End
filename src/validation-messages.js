@@ -16,13 +16,5 @@ export default {
         minLength: "Password must be at least 6 characters long"
       }
     }
-  },
-
-  name: {
-    confirmPassword: {
-      rule: {
-        matches: "The provided passwords do not match"
-      }
-    }
   }
 };

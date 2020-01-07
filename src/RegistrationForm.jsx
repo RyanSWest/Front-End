@@ -1,31 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Field } from "react-advanced-form";
 import { Input, Button } from "react-advanced-form-addons";
+import Axios from "axios";
 
 function NewRegistrationForm(props) {
-  const registerUser = ({ serialized, fields, form }) => {
-    return fetch("https://backend.dev", {
-      body: JSON.stringify(serialized)
-    });
-  };
+  console.log(props);
+  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [password, setUserPassword] = useState("");
+  const [location, setLocation] = useState("");
 
+  const handleEmailChange = event => {
+    let value = event.nextValue;
+    setUserEmail(value);
+  };
+  const handleUsernameChange = event => {
+    let value = event.nextValue;
+    setUserName(value);
+  };
+  const handlePasswordChange = event => {
+    let value = event.nextValue;
+    setUserPassword(value);
+  };
+  const handleLocationChange = event => {
+    let value = event.nextValue;
+    setLocation(value);
+  };
+  const registerUserOnSubmit = e => {
+    let newObj = {
+      email: userEmail,
+      username: userName,
+      password: password,
+      location: location
+    };
+    e.preventDefault();
+    Axios.post("https://bw-foodiefun.herokuapp.com/api/users/login", newObj)
+      .then(res => {
+        //console.log(res);
+        localStorage.setItem("token", res.data.token);
+      })
+      .catch(err => console.log(err));
+    //console.log("REG", userData);
+    /* props.history.push("/dashboard"); */
+  };
+  //console.log("blah", userData);
   return (
-    <Form action={registerUser} onSubmitStart={props.onSubmitStart}>
-      <Field.Group name="primaryInfo">
-        <Input name="userEmail" type="email" label="E-mail" required />
-        <Input name="username" type="username" label="Username" required />
-        <Input name="userPassword" type="password" label="Password" required />
+    <Form>
+      <Field.Group>
         <Input
-          name="confirmPassword"
-          type="password"
-          label="Confirm Password"
+          name="userEmail"
+          type="email"
+          label="E-mail"
+          onChange={handleEmailChange}
           required
-          skip
         />
-        <Input name="location" label="City Name" required />
+        <Input
+          name="username"
+          type="username"
+          label="Username"
+          onChange={handleUsernameChange}
+          required
+        />
+        <Input
+          name="userPassword"
+          type="password"
+          label="Password"
+          onChange={handlePasswordChange}
+          required
+        />
+        <Input
+          name="location"
+          label="City Name"
+          onChange={handleLocationChange}
+          required
+        />
       </Field.Group>
 
-      <Button primary>Register</Button>
+      <Button primary onClick={registerUserOnSubmit}>
+        Register
+      </Button>
     </Form>
   );
 }
