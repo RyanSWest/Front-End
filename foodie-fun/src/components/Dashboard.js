@@ -50,6 +50,7 @@ const Dashboard = (props)=> {
    const clearSearch = (e)=> {
      e.preventDefault()
      setSearch('')
+     setType('ALL')
      axiosWithAuth()
      .get('https://bw-foodiefun.herokuapp.com/api/restaurants/')     
      .then(res => setDiners(res.data))
@@ -122,7 +123,7 @@ onChange ={e => setSearch(e.target.value) }
          {diners.map(d => {
              return(
 
-                <Restaraunt stuff = {d} setDiners ={setDiners}/>
+                <Restaraunt stuff = {d}setDiners ={setDiners}/>
              )
          })}
 
