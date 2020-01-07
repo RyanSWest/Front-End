@@ -11,3 +11,59 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.dashboard{
+
+  background-color:maroon;
+  color:whitesmoke;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.restaurant-div{
+  background-color: orange;
+  display:flex;
+  flex-direction: column;
+   align-items: center;
+   border: 4px solid white;
+   color:white;
+   width:80%;
+   margin:15px;
+
+}
+
+.image{
+  
+  border: 4px solid white;
+  border-radius: 5px;
+  width:70%;
+  height:60%;
+}
+
+.place-name{
+
+
+  color:white;
+  font-size: xx-large;
+   border-radius: 10px;
+  margin:20px;
+}
+
+.add-form{
+
+  display:flex;
+  flex-direction: column;
+  border: 3px solid whitesmoke;
+  
+ 
+}
+.add-form input {
+  margin: 5px;
+}
+
+.top{
+  display: flex;
+  flex-direction: column;
+  border: 4px solid whitesmoke;
+}
