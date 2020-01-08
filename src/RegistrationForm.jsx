@@ -4,7 +4,6 @@ import { Input, Button } from "react-advanced-form-addons";
 import Axios from "axios";
 
 function NewRegistrationForm(props) {
-  console.log(props);
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setUserPassword] = useState("");
@@ -41,7 +40,8 @@ function NewRegistrationForm(props) {
       })
       .catch(err => console.log(err));
     //console.log("REG", userData);
-    /* props.history.push("/dashboard"); */
+    console.log(props);
+    props.history.push("/dashboard");
   };
   //console.log("blah", userData);
   return (
