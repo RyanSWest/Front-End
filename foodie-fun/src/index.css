@@ -67,3 +67,20 @@ code {
   flex-direction: column;
   border: 4px solid whitesmoke;
 }
+
+.review-form{
+  background-color: darkorange;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  width:75%
+
+}
+
+.rating-top{
+  padding:20px;
+  margin:10px;
+  display:flex;
+ 
+}

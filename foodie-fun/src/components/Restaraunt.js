@@ -134,23 +134,12 @@ const Restaraunt = ({ stuff, setDiners }) => {
             }
           />
 
-          {/* <button onClick ={(e)=>editItem(stuff.id)}>ENTER</button> */}
-          <button type="submit">ENTER</button>
+           <button type="submit">ENTER</button>
           <button onClick={() => setEditing(false)}>Cancel</button>
         </form>
       )}
 
-      {reviewing && (
-        <div>
-          <form>
-            <input
-              type="text"
-              placeholder="review"
-              onChange={e => setReview(e.target.value)}
-            />
-          </form>{" "}
-        </div>
-      )}
+      
     </div>
   );
 };
