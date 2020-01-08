@@ -23,8 +23,7 @@ const Restaraunt = ({ stuff, setDiners }) => {
   };
 
   const [editing, setEditing] = useState(false);
-  const [reviewing, setReviewing] = useState(false);
-  const [review, setReview] = useState({});
+   const [review, setReview] = useState({});
 
   const [dinerEdit, setDinerEdit] = useState(initialDiner);
 
