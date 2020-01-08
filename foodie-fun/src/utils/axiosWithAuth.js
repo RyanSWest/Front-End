@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 export const axiosWithAuth =()=> {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Authorization");
     const user_id = localStorage.getItem("user_id")
 
 
@@ -10,7 +10,7 @@ export const axiosWithAuth =()=> {
     return axios.create ({
         headers: {
             "Content-Type": "application/json",
-           'authorization': `${token}`,
+           'Authorization': `${token}`,
            'user_id':` ${user_id}`
            
         },

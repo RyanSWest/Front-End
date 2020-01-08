@@ -5,8 +5,7 @@ const AddDiner = ()=> {
 
      const user = localStorage.getItem('user_id');
 
-     console.log("USER FROM ADD FORM", user)
-
+ 
     const [diners, setDiners]= useState([]);
 
     const [adding, setAdding]= useState(false);
@@ -22,7 +21,15 @@ const AddDiner = ()=> {
          photo_url:''
 
      })
+     
+     const settingDiners =()=> {
+        axiosWithAuth()
+        .get(`https://bw-foodiefun.herokuapp.com/api/restaurants/`)
+        .then(res => setDiners(res.data))
+        .catch(err => console.log(err.message))
 
+
+     }
 
      const onSubmit = (e)=> {
          e.preventDefault();
@@ -35,8 +42,10 @@ const AddDiner = ()=> {
 
          setDiners(...diners, restaurant)
          console.log("DINERS FROM ADD FORM", diners)
-
+ 
          setAdding(false);
+         settingDiners();
+
 
 
 
