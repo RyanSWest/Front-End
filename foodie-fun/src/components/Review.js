@@ -24,10 +24,7 @@ const Review = props => {
       .catch(err => console.log(err.message));
   }, []);
 
-  console.log("PLACE HERE", place.cuisine, place.id);
-  console.log("ITEMS", items);
-
-  // making variable for the review
+   
 
   const [review, setReview] = useState({
     restaurant_id: 34,
@@ -66,10 +63,8 @@ const Review = props => {
   return (
     <div className="Review">
       <h1>Review</h1>
-      <h2>{place.name}</h2>
-      <h2>{place.cuisine}</h2>
-      <p>{place.id}</p>
-
+      <h1 className= 'review-name'>{place.name}</h1>
+      
       <form className="review-form" type="submit" onSubmit={addReview}>
         <div className="rating-top">
           <input

@@ -129,3 +129,16 @@ code {
   padding:25px;
 
 }
+.edit-item-form{
+
+display:flex;
+flex-direction: column;
+
+}
+.Review{
+  background-color: orangered;
+  color:whitesmoke;
+}
+.review-name{
+  border: 3px solid white;
+}
