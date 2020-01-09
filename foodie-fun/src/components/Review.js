@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import "../index.css";
 import Item from "./Item";
+import Nav from './Nav'
 
 const Review = props => {
    const id = props.match.params.id;
@@ -9,12 +10,28 @@ const Review = props => {
   const user = localStorage.getItem("user_id");
   const [items, setItems] = useState([]);
   const nums = [1, 2, 3, 4, 5];
+
+  const [review, setReview] = useState({
+    restaurant_id: "",
+    cuisine: "",
+    name: "",
+    photo_url: "",
+    rating: 1,
+    review: "",
+    user_id: parseInt(user)
+  });
   
    useEffect(() => {
     axiosWithAuth()
       .get(`https://bw-foodiefun.herokuapp.com/api/restaurants/${id}`)
       .then(res => {
         setPlace(res.data);
+        let resID = res.data.id
+        setReview({
+          ...review,
+          restaurant_id: resID,
+          cuisine: res.data.cuisine
+        })
       })
       .catch(err => console.log(err.message));
 
@@ -24,17 +41,10 @@ const Review = props => {
       .catch(err => console.log(err.message));
   }, []);
 
+  
    
 
-  const [review, setReview] = useState({
-    restaurant_id: 34,
-    cuisine: "Asian",
-    name: "",
-    photo_url: "",
-    rating: parseInt(),
-    review: "",
-    user_id: parseInt(user)
-  });
+  
 
   const reset = () => {
     setReview({
@@ -49,6 +59,8 @@ const Review = props => {
 
   const addReview = e => {
     e.preventDefault();
+    console.log(review)
+    console.log( "PLACE",place)
     axiosWithAuth()
       .post(`https://bw-foodiefun.herokuapp.com/api/items/`, review)
       .then(res => setItems([...items, res.data]))
@@ -57,11 +69,10 @@ const Review = props => {
     reset();
   };
 
-  
-
   console.log("ITEMS", items);
   return (
     <div className="Review">
+      <Nav/>
       <h1>Review</h1>
       <h1 className= 'review-name'>{place.name}</h1>
       

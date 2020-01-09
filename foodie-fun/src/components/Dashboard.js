@@ -12,7 +12,6 @@ const Dashboard = props => {
 
   let user = localStorage.getItem("username");
    const types = ["Italian", "Asian", "BBQ", "Mexican"];
-
   const [diners, setDiners] = useState([]);
   const [search, setSearch] = useState([]);
   const [type, setType] = useState([]);
