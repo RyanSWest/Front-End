@@ -8,7 +8,7 @@ import Register from "./components/Register";
 import Review from "./components/Review";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Restaraunt from "./components/Restaraunt";
-
+ 
 function App() {
   return (
     <div className="App">
@@ -20,7 +20,8 @@ function App() {
         <Route exact path="/login" component={Login} />
 
         <PrivateRoute exact path="/reviews/:id" component={Review} />
-      </Router>
+
+       </Router>
     </div>
   );
 }

@@ -23,8 +23,7 @@ const Restaraunt = ({ stuff, setDiners }) => {
   };
 
   const [editing, setEditing] = useState(false);
-  const [reviewing, setReviewing] = useState(false);
-  const [review, setReview] = useState({});
+  
 
   const [dinerEdit, setDinerEdit] = useState(initialDiner);
 
@@ -72,8 +71,7 @@ const Restaraunt = ({ stuff, setDiners }) => {
       <Link to={`/reviews/${stuff.id}`}>View Review</Link>
 
       <button onClick={() => deleteItem(stuff.id)}>X</button>
-      {/* <button onClick ={()=>history.push(`https://bw-foodiefun.herokuapp.com/api/restaurants/${stuff.id}`)}>Add review</button> */}
-
+ 
       <button onClick={setEditing}>EDIT</button>
 
       {editing && (
@@ -134,23 +132,12 @@ const Restaraunt = ({ stuff, setDiners }) => {
             }
           />
 
-          {/* <button onClick ={(e)=>editItem(stuff.id)}>ENTER</button> */}
-          <button type="submit">ENTER</button>
+           <button type="submit">ENTER</button>
           <button onClick={() => setEditing(false)}>Cancel</button>
         </form>
       )}
 
-      {reviewing && (
-        <div>
-          <form>
-            <input
-              type="text"
-              placeholder="review"
-              onChange={e => setReview(e.target.value)}
-            />
-          </form>{" "}
-        </div>
-      )}
+      
     </div>
   );
 };
