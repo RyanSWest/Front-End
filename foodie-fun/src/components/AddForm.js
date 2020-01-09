@@ -1,9 +1,12 @@
-import React , {useState, useEffect}from 'react';
+import React , {useState, useEffect, useContext}from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+import {RestarauntContext} from '../contexts/restaurantContext';
+
 
 const AddDiner = ()=> {
 
      const user = localStorage.getItem('user_id');
+     const {places} = useContext(RestarauntContext)
 
  
     const [diners, setDiners]= useState([]);
@@ -23,10 +26,12 @@ const AddDiner = ()=> {
      })
      
      const settingDiners =()=> {
-        axiosWithAuth()
-        .get(`https://bw-foodiefun.herokuapp.com/api/restaurants/`)
-        .then(res => setDiners(res.data))
-        .catch(err => console.log(err.message))
+       setDiners(places)
+
+        // axiosWithAuth()
+        // .get(`https://bw-foodiefun.herokuapp.com/api/restaurants/`)
+        // .then(res => setDiners(res.data))
+        // .catch(err => console.log(err.message))
 
 
      }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Restaraunt from "./Restaraunt";
@@ -6,9 +6,13 @@ import AddForm from "./AddForm";
 import Review from "./Review";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import {RestarauntContext} from '../contexts/restaurantContext';
+ 
 const Dashboard = props => {
   const history = useHistory();
+
+  const {places} = useContext(RestarauntContext)
+  console.log("PLACES",places)
 
   let user = localStorage.getItem("username");
    const types = ["Italian", "Asian", "BBQ", "Mexican"];
@@ -17,10 +21,8 @@ const Dashboard = props => {
   const [type, setType] = useState([]);
 
   useEffect(() => {
-    axiosWithAuth()
-      .get("https://bw-foodiefun.herokuapp.com/api/restaurants/")
-      .then(res => setDiners(res.data))
-       .catch(err => console.log(err));
+   
+    setDiners(places)
   }, [type]);
 
   
@@ -61,7 +63,21 @@ const Dashboard = props => {
       <h1>Restaraunts</h1>
 
       <div className="top">
-        <form type="submit" onSubmit={submitType}>
+      <form type="submit" onSubmit={submitSearch}
+           className='search'>
+          <input
+            type="text"
+            value={search}
+            placeholder="search"
+            onChange={e => setSearch(e.target.value)}
+          />
+          <button type="submit">Enter</button>
+          <button onClick={clearSearch}>Clear</button>
+        </form>
+        <form type="submit" onSubmit={submitType}
+         className ='dropdown'
+        
+        >
           <label htmlFor="type">
             type
             <select
@@ -81,16 +97,7 @@ const Dashboard = props => {
           <button type="submit">Enter</button>
         </form>
 
-        <form type="submit" onSubmit={submitSearch}>
-          <input
-            type="text"
-            value={search}
-            placeholder="search"
-            onChange={e => setSearch(e.target.value)}
-          />
-          <button type="submit">Enter</button>
-          <button onClick={clearSearch}>Clear</button>
-        </form>
+         
       </div>
 
       <AddForm />
