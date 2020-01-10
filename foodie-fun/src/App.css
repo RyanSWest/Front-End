@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+.carousel {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+/* .foodpic {
+  width: 300px;
+} */
+/* 
+.carousel {
+  align-items: center;
+  width: 600px;
+} */
