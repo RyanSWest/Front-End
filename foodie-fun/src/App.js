@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+ 
+  
+ 
 import "./App.css";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -50,7 +52,7 @@ function App() {
         <PrivateRoute exact path="/reviews/:id" component={Review} />
       </Router>
     </div>
-  );
+   );
 }
 
 export default App;
