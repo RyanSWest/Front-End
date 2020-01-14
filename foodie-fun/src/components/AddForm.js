@@ -1,33 +1,29 @@
-import React , {useState, useEffect}from 'react';
+import React , {useState, useEffect, useContext}from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+import {RestarauntContext} from '../contexts/restaurantContext';
+
 
 const AddDiner = ()=> {
 
      const user = localStorage.getItem('user_id');
+     const {places, place} = useContext(RestarauntContext)
 
  
     const [diners, setDiners]= useState([]);
 
     const [adding, setAdding]= useState(false);
 
-     const [restaurant, setRestaurant]= useState({
-         name: '',
-         cuisine: '',
-         location:'',
-         hour_open: ' ' ,
-         hour_closed: '',
-         days_open:'',
-         user_id:  parseInt(user),
-         photo_url:''
-
-     })
+     const [restaurant, setRestaurant]= useState(place)
      
      const settingDiners =()=> {
-        axiosWithAuth()
-        .get(`https://bw-foodiefun.herokuapp.com/api/restaurants/`)
-        .then(res => setDiners(res.data))
-        .catch(err => console.log(err.message))
+       setDiners(places)
 
+       //before using context, worked without the refresh
+      //  axiosWithAuth()
+      //  .get("https://bw-foodiefun.herokuapp.com/api/restaurants/")
+      //  .then(res => setDiners(res.data))
+      //  .catch(err => console.log(err));
+ 
 
      }
 

@@ -64,10 +64,18 @@ code {
 
 .top{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border: 4px solid whitesmoke;
 }
 
+.search{
+
+  padding:25px;
+}
+
+.dropdown{
+  padding:25px;
+}
 
 
 .Review{
