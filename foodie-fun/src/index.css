@@ -152,3 +152,18 @@ flex-direction: column;
   margin: 10px;
 
 }
+
+.link-div{
+
+  
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+}
+.HomePage-div{
+
+  background-color: darkorange;
+  color:whitesmoke
+}
+ 

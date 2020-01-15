@@ -9,12 +9,14 @@ import PrivateRoute from "./utils/privateRoute";
 import Register from "./components/Register";
 import Review from "./components/Review";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import HomePage from './components/HomePage';
 import Restaraunt from "./components/Restaraunt";
  
 function App() {
   return (
     <div className="App">
       <Router>
+        <Route exact path ='/' component={HomePage}/>
          <Route exact path="/register" component={Register} />
 
         <PrivateRoute path="/dashboard" component={Dashboard} />
